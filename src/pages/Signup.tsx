@@ -1,8 +1,8 @@
 import Input from '../components/Input'
 import Buttons from '../components/Buttons'
-// import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react';
+import axios from "axios"
 
 function Signup() {
 
@@ -11,8 +11,21 @@ function Signup() {
   const [name, setName] = useState("shubham mingwal");
   const [password, setPassword] = useState("123456");
   const [error, setError] = useState("");
-  const signuphandler = ()=>{
-
+  const signuphandler = async()=>{
+    const axiosConfig= {
+        email,
+        password,
+        name
+    }
+  
+    try {
+      const response = await axios.post('https://blackbox.shubhammingi.workers.dev/user/signup', axiosConfig)
+      console.log(response.data)
+      navigate("/login")
+    } catch (error: any) {
+      console.error(error)
+      setError(error.response.data.message)
+    }
   }
   return (
     <div>
@@ -30,7 +43,7 @@ function Signup() {
           <Input placeholder="Name" onchange={setName} value={name} label="Name" classname='' type='text'/>
           <Input placeholder="Email" onchange={setEmail} value={email} label="Email" classname='' type='text'/>
           <Input placeholder="Password" onchange={setPassword} type="password" value={password} label='Password'  classname=''/>
-          <div className='text-errorRed text-center'>{error}</div>
+          <div className='text-red-700 text-center'>{error}</div>
           <Buttons title="Sign up" onclick={signuphandler} className=''/>
           <div className='text-center text-grayText'>Already have a account?</div>
           <Buttons title="Login" onclick={()=>{navigate("/login")}} className=''/>
