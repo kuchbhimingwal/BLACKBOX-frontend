@@ -24,7 +24,7 @@ function Login() {
       console.log(response.data)
       localStorage.setItem('Token',response.data.token);
       dispatch(loggeed())
-      // navigate("/")
+      navigate("/")
     } catch (error: any) {
       console.error(error)
       setError(error.response.data.message)
@@ -33,9 +33,9 @@ function Login() {
     }
 
   }
-  useEffect(()=>{
-    if(isLogged) navigate('/')
-  },[])
+  // useEffect(()=>{
+  //   if(isLogged) navigate('/')
+  // },[])
   return (
     <div className=''>
       
