@@ -33,7 +33,7 @@ function Signup() {
     <div className=''>
       
       <div className='flex h-screen justify-center'>
-        <div className=' sm:px-20 sm:py-24 px-10 py-14 w-1/2'>
+        <div className='px-20 py-20  w-full md:w-3/4 lg:w-1/2'>
           <div className='text-black font-bold text-2xl'>
             BLACKBOX
           </div>

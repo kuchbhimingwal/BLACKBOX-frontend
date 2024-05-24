@@ -1,12 +1,13 @@
 import Input from '../components/Input'
 import Buttons from '../components/Buttons'
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { loggeed } from '../store/slices/loggedinslice'
 function Login() {
-  // const dispatch = useDispatch();
-  // const isLogged = useSelector((state)=> state.loogedIn.value);
+  const dispatch = useAppDispatch();
+  const isLogged = useAppSelector((state)=> state.loogedIn.value);
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("abcd@gmail.com");
   const [password, setPassword] = useState<string>("12345");
@@ -22,6 +23,7 @@ function Login() {
       const response = await axios.post('https://blackbox.shubhammingi.workers.dev/user/login', axiosConfig)
       console.log(response.data)
       localStorage.setItem('Token',response.data.token);
+      dispatch(loggeed())
       // navigate("/")
     } catch (error: any) {
       console.error(error)
@@ -31,11 +33,14 @@ function Login() {
     }
 
   }
+  useEffect(()=>{
+    if(isLogged) navigate('/')
+  },[])
   return (
     <div className=''>
       
     <div className='flex h-screen justify-center'>
-      <div className=' sm:px-20 sm:py-24 px-10 py-14 w-1/2'>
+      <div className='px-20 py-20 w-full md:w-3/4 lg:w-1/2'>
         <div className='text-black font-bold text-2xl'>
           BLACKBOX
         </div>
