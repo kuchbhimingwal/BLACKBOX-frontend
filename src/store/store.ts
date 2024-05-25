@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import loggedInSlice from './slices/loggedinslice'
-
+import addUserSclice from './slices/profileSlice'
 export const store = configureStore({
   reducer: {
-    loogedIn : loggedInSlice
+    loogedIn : loggedInSlice,
+    addUser: addUserSclice
   }
 })
 
