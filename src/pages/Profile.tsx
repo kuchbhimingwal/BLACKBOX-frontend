@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import Buttons from '../components/Buttons';
 import { useNavigate } from 'react-router-dom';

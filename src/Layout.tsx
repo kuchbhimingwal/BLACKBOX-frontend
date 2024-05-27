@@ -1,7 +1,8 @@
 
 import { useAppSelector } from './store/hooks';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from './components/Header';
+import Footer from './components/Footer';
 function Layout() {
   const isLogged = useAppSelector((state)=> state.loogedIn.value);
   if (isLogged){
@@ -9,6 +10,7 @@ function Layout() {
       <div>
         <Header />
         <Outlet />
+        <Footer />
       </div>
     )
   } else {

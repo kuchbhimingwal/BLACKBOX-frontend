@@ -1,5 +1,5 @@
-import React from 'react'
- interface ButtonINterface {
+
+interface ButtonINterface {
   onclick: ()=> void;
   className: string;
   title: string;
