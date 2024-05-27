@@ -10,8 +10,8 @@ interface Props {
 
 function PostCard({title, createdAt, content, name}: Props) {
   return (
-    <div className='grid grid-cols-3 my-10 border-b border-gray-300'>
-      <div className='col-span-2'>
+    <div className='grid grid-cols-3 my-10 border-b border-gray-300 pb-5'>
+      <div className='col-span-3'>
         <div className='flex'>
           <div className='flex items-center justify-center text-sm mr-2 bg-black text-white rounded-full w-5 h-5  text-center'>{name.charAt(0)}</div>
           {name} {dateFormat(createdAt, " mmmm dS,dddd, yyyy")}

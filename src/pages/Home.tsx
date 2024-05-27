@@ -29,6 +29,7 @@ function Home() {
   },[])
   return (
     <div className='px-10'>
+      <div className='font-extrabold text-4xl mt-4'>ALL POSTS</div>
       {posts.map((post: any)=>(
         <PostCard key={post.id} title={post.title} createdAt={post.createdAt} content={post.content} name={post.author.name} />
       ))}
