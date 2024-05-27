@@ -14,7 +14,7 @@ function Buttons({
   }
   return (
     <>
-      <button className={`bg-black text-center p-2 w-full text-white rounded-md my-2 hover:bg-opacity-90 transition transition-opacity${className}`} onClick={clickHandler}>{title}</button>
+      <button className={`bg-black text-center p-2 w-full text-white rounded-md my-2 hover:bg-opacity-90 transition transition-opacity ${className}`} onClick={clickHandler}>{title}</button>
     </>
   )
 }

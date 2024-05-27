@@ -5,12 +5,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { loggeed } from '../store/slices/loggedinslice'
+import { addUser } from '../store/slices/profileSlice';
 function Login() {
   const dispatch = useAppDispatch();
   const isLogged = useAppSelector((state)=> state.loogedIn.value);
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>("abcd@gmail.com");
-  const [password, setPassword] = useState<string>("12345");
+  const [email, setEmail] = useState<string>("shubhamingi@gmail.com");
+  const [password, setPassword] = useState<string>("123456");
   const [error, setError] = useState("");
   const loginHandler = async()=>{
     localStorage.clear();
@@ -24,6 +25,21 @@ function Login() {
       console.log(response.data)
       localStorage.setItem('Token',response.data.token);
       dispatch(loggeed())
+
+      const token = "Bearer" + " " + response.data.token;
+      const axiosConfig2 = {
+        headers: {
+          Authorization: token
+        }
+      }
+  
+      try {
+        const user = await axios.get('https://blackbox.shubhammingi.workers.dev/post/profile', axiosConfig2)
+        console.log(user.data.res);
+        dispatch(addUser(user.data.res))
+      } catch (error) {
+        console.log(error);
+      }
       navigate("/")
     } catch (error: any) {
       console.error(error)
@@ -33,9 +49,9 @@ function Login() {
     }
 
   }
-  // useEffect(()=>{
-  //   if(isLogged) navigate('/')
-  // },[])
+  useEffect(()=>{
+    if(isLogged) navigate('/')
+  },[])
   return (
     <div className=''>
       

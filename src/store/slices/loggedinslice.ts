@@ -3,9 +3,16 @@ import type { RootState } from '../store'
 interface loggedState {
   value: Boolean
 }
+
 const initialState: loggedState = {
   value: false,
 }
+if(localStorage.getItem("Token")){
+   initialState.value = true
+} else {
+  initialState.value = false
+}
+
 
 export const loggedInSlice = createSlice({
   name: 'loogedIn',

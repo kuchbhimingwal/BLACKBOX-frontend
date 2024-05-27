@@ -11,7 +11,7 @@ export const addUserSclice = createSlice({
   name: 'addUser',
   initialState,
   reducers:{
-    addUser: (state, action: PayloadAction<number>) =>{
+    addUser: (state, action: PayloadAction<addUserState>) =>{
       state.value = action.payload
     }
   },

@@ -7,9 +7,9 @@ import axios from "axios"
 function Signup() {
 
   const navigate = useNavigate();
-  const [email, setEmail] = useState("shubhammingi@gmail.com");
-  const [name, setName] = useState("shubham mingwal");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const signuphandler = async()=>{
     const axiosConfig= {

@@ -23,19 +23,6 @@ function PostCard({title, createdAt, content, name}: Props) {
           {content}
         </div>
       </div>
-      <div className='col-span-1'>
-        <div className='text-gray-500 text-sm'>
-          Author
-        </div>
-        <div className=''>
-          <div className='font-bold text-lg'>
-            {name}
-          </div>
-          <div className='text-gray-400'>
-            Master mirth, fdnejdnqed, fcewq f,ew f
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

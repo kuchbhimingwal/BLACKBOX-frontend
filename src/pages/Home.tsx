@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
 import PostCard from '../components/PostCard'
-import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { useAppSelector } from '../store/hooks';
 import { useNavigate } from "react-router-dom";
-import { addUser } from '../store/slices/profileSlice';
 import axios from 'axios';
 
 function Home() {
-  const dispatch = useAppDispatch();
   const [posts , setPosts] = useState([])
   const isLogged = useAppSelector((state)=> state.loogedIn.value);
   const navigate = useNavigate();
@@ -19,14 +17,6 @@ function Home() {
       headers: {
         Authorization: token
       }
-    }
-    try {
-      const user = await axios.get('https://blackbox.shubhammingi.workers.dev/post/profile', axiosConfig)
-      console.log(user.data.res);
-      dispatch(addUser(user.data.res))
-    } catch (error) {
-      console.log(error);
-      
     }
     try {
       const res = await axios.get('https://blackbox.shubhammingi.workers.dev/post/bulk', axiosConfig)
